@@ -17,4 +17,6 @@ def index():
 def dictionary(word):
     data = read_csv("sonaraamat4.csv")
     entry = get_meaning(word, data)
+    if not entry:
+        return render_template('404.html', word=word, entry=entry)
     return render_template('dictionary.html', word=word, entry=entry)

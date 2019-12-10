@@ -4,4 +4,4 @@ from wtforms.validators import DataRequired
 
 class WordForm(FlaskForm):
     word = StringField('Sisesta sõna', validators=[DataRequired()])
-    submit = SubmitField('Järgmine')
+    submit = SubmitField('Tõlgi')

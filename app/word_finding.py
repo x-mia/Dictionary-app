@@ -23,24 +23,16 @@ def get_meaning(w, data):
 
     elif len(get_close_matches(w, data["Eesti sõna"])) > 0:
         close_match = get_close_matches(w, data["Eesti sõna"])[0]
-        print("Did you mean this instead?: Enter y if yes or n if no")
-        print(close_match)
-        choice = input()
-        if choice == "y":
-            df = data[data["Eesti sõna"] == close_match]
-            first_row = df.iloc[0]
-            entry = Entry(est_word=first_row["Eesti sõna"], est_postag=first_row["Est. sõnaliik"],
-            svk_words=df["Slovaki sõna"].tolist(), svk_postags=df["Slov. sõnaliik"].tolist(), score=first_row["Skoor"],
-            sagedus=first_row["Sagedus"], sg_gen=first_row["SG GEN"], sg_part=first_row["SG PART"],
-            sg_ill=first_row["SG ILL"], short_ill=first_row["SHORT ILL"], pl_part=first_row["PL PART"],
-            da_inf=first_row["DA INF"], first_pers=first_row["1.isik aktiiv"], impers=first_row["Impersonaal"],
-            vocabulary=first_row["Põhisõnavara esinev"], sonaveeb=first_row["Sõnaveeb"])
-            return entry
+        df = data[data["Eesti sõna"] == close_match]
+        first_row = df.iloc[0]
+        entry = Entry(est_word=first_row["Eesti sõna"], est_postag=first_row["Est. sõnaliik"],
+        svk_words=df["Slovaki sõna"].tolist(), svk_postags=df["Slov. sõnaliik"].tolist(), score=first_row["Skoor"],
+        sagedus=first_row["Sagedus"], sg_gen=first_row["SG GEN"], sg_part=first_row["SG PART"],
+        sg_ill=first_row["SG ILL"], short_ill=first_row["SHORT ILL"], pl_part=first_row["PL PART"],
+        da_inf=first_row["DA INF"], first_pers=first_row["1.isik aktiiv"], impers=first_row["Impersonaal"],
+        vocabulary=first_row["Põhisõnavara esinev"], sonaveeb=first_row["Sõnaveeb"])
+        return entry
 
-        elif choice == "n":
-            print("The word doesn't exist.")
-        else:
-            print("Sorry. We didn't understand your entry.")
     else:
         print("The word doesn't exist.")
 

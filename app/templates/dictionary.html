@@ -3,22 +3,47 @@
 
 {% block app_content %}
     <h1>Eesti-Slovaki Sõnaraamat</h1>
-    <h2><small>
-    <p class="text-primary">
-      {{ entry.est_word }}
-    </p>
-    </small></h2>
+    <a href="{{ url_for('index') }}">Tagasi</a>
+      <dl>
+    <dt><h3>
+    <p class="text-primary"> {{ entry.est_word }}<small class="font-italic text-lowercase"> {{ entry.est_postag }} </small> </p>  </h3>
+
+    </dt>
     <div class="row">
         <div class="col-md-4">
           {% for item in entry.svk_words %}
-            {{ item }}
+            <dd> {{ item }} </dd>
               {% endfor %}
         </div>
     </div>
+    </dl>
     <div class="row">
         <div class="col-md-4">
-			<a href= {{ entry.sonaveeb }} > {{ entry.sonaveeb }} </a>
+			    <a href= {{ entry.sonaveeb }} > {{ entry.sonaveeb }} </a>
         </div>
     </div>
-    <a href="{{ url_for('index') }}">Back</a>
+    <dl>
+    <span class="container" style="margin-top:30px">
+      <div class="row">
+        <div class="col-sm-4">
+          <dt><p class="text-success">Sõna vormid:</p></dt>
+
+            <dd> GEN sg:{{ entry.sg_gen }}</dd>
+            <dd> PART sg: {{ entry.sg_part }}</dd>
+            <dd> ILL sg: {{ entry.sg_ill }}</dd>
+            <dd> ILL: {{ entry.short_ill }}</dd>
+            <dd> PART pl:{{ entry.pl_part }}</dd>
+            <dd> DA-INF: {{ entry.da_inf }}</dd>
+            <dd> 1.pers. active: {{ entry.first_pers }}</dd>
+            <dd> Impersonal: {{ entry.impers }}</dd>
+        </div>
+    </div>
+    </span>
+    </dl>
+    <div class="row">
+        <div class="col-sm-8">
+          <p class="lead">
+          <p class="text-secondary">Kas teil on mingi soovitusi? Puudub midagi? Tahaksite aidata tõlkimisega? Kindlasti kirjutage - 449884@mail.muni.cz ! Ootame kõik huvilisi :)</p>
+        </div>
+    </div>
 {% endblock %}
