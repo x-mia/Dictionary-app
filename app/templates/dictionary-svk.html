@@ -29,14 +29,9 @@
   <dl>
       <dt><p class="text-success" style="margin-top:30px; color: #bf8040">Formy slova:</p></dt>
 
-        <dd> {{ entry.sg_gen }}</dd>
-        <dd> {{ entry.sg_part }}</dd>
-        <dd> {{ entry.sg_ill }}</dd>
-        <dd> {{ entry.short_ill }}</dd>
-        <dd> {{ entry.pl_part }}</dd>
-        <dd> {{ entry.da_inf }}</dd>
-        <dd> {{ entry.first_pers }}</dd>
-        <dd> {{ entry.impers }}</dd>
+      {% for item in entry.shapes.split(',') %}
+      <dd> {{ item[2:-1] }} </dd>
+        {% endfor %}
     </div>
 </div>
 

@@ -2,7 +2,7 @@ from pandas import read_csv
 from difflib import get_close_matches
 from collections import namedtuple
 
-Entry = namedtuple('Entry', 'est_word est_postag svk_words svk_postags score sagedus sg_gen sg_part sg_ill short_ill pl_part da_inf first_pers impers vocabulary sonaveeb')
+Entry = namedtuple('Entry', 'est_word est_postag svk_words svk_postags score sagedus sg_gen sg_part sg_ill short_ill pl_part da_inf first_pers impers vocabulary sonaveeb shapes')
 
 # data = read_csv("sonaraamat4.csv")
 
@@ -18,7 +18,7 @@ def get_meaning(w, data):
         sagedus=first_row["Sagedus"], sg_gen=first_row["SG GEN"], sg_part=first_row["SG PART"],
         sg_ill=first_row["SG ILL"], short_ill=first_row["SHORT ILL"], pl_part=first_row["PL PART"],
         da_inf=first_row["DA INF"], first_pers=first_row["1.isik aktiiv"], impers=first_row["Impersonaal"],
-        vocabulary=first_row["Põhisõnavara esinev"], sonaveeb=first_row["Sõnaveeb"])
+        vocabulary=first_row["Põhisõnavara esinev"], sonaveeb=first_row["Sõnaveeb"], shapes=first_row["Shapes"])
         return entry
 
     elif len(get_close_matches(w, data["Eesti sõna"])) > 0:
@@ -30,7 +30,7 @@ def get_meaning(w, data):
         sagedus=first_row["Sagedus"], sg_gen=first_row["SG GEN"], sg_part=first_row["SG PART"],
         sg_ill=first_row["SG ILL"], short_ill=first_row["SHORT ILL"], pl_part=first_row["PL PART"],
         da_inf=first_row["DA INF"], first_pers=first_row["1.isik aktiiv"], impers=first_row["Impersonaal"],
-        vocabulary=first_row["Põhisõnavara esinev"], sonaveeb=first_row["Sõnaveeb"])
+        vocabulary=first_row["Põhisõnavara esinev"], sonaveeb=first_row["Sõnaveeb"], shapes=first_row["Shapes"])
         return entry
 
     else:

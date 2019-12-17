@@ -26,7 +26,7 @@ def dictionary(word):
     if form.validate_on_submit():
         return redirect(url_for('dictionary', form=form, word=form.word.data))
 
-    data = read_csv("sonaraamat4.csv")
+    data = read_csv("sonastik.csv")
     entry = get_meaning(word, data)
     if not entry:
         return render_template('404.html', form=form, word=word, entry=entry)
@@ -38,7 +38,7 @@ def dictionary_svk(word):
     if form.validate_on_submit():
         return redirect(url_for('dictionary_svk', form=form, word=form.word.data))
 
-    data = read_csv("sonaraamat4.csv")
+    data = read_csv("sonastik.csv")
     entry = get_meaning(word, data)
     if not entry:
         return render_template('404-svk.html', form=form, word=word, entry=entry)
