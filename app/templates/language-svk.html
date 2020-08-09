@@ -4,6 +4,20 @@
 {% block app_content %}
 <div class="row">
 <div class="col-sm-2">
+  <dl>
+      <dt><p class="text-success" style="margin-top: 30px; color: #bf8040;">Ďalšie:</p></dt>
+
+      {% for item in other_found_words[:5] %}
+      <dd>{{ item.svk_word }}</dd>
+      {% endfor %}
+  </dl>
+  <dl>
+      <dt><p class="text-success" style="margin-top: 30px; color: #bf8040;">Podobné:</p></dt>
+
+      {% for item in other_close_matches[:5] %}
+      <dd>{{ item.svk_word }}</dd>
+      {% endfor %}
+  </dl>
     </div>
 
 <div class="col-sm-7"><dl>

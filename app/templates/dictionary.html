@@ -1,41 +1,53 @@
-{% extends "base.html" %}
-{% import 'bootstrap/wtf.html' as wtf %}
-
-{% block app_content %}
+{% extends "base.html" %} {% import 'bootstrap/wtf.html' as wtf %} {% block app_content %}
 <div class="row">
-<div class="col-sm-2">
+    <div class="col-sm-2">
+        <dl>
+            <dt><p class="text-success" style="margin-top: 30px; color: #bf8040;">Muud:</p></dt>
+
+            {% for item in other_found_words[:5] %}
+            <dd>{{ item.est_word }}</dd>
+            {% endfor %}
+        </dl>
+        <dl>
+            <dt><p class="text-success" style="margin-top: 30px; color: #bf8040;">Lähedad sõnad:</p></dt>
+
+            {% for item in other_close_matches[:5] %}
+            <dd>{{ item.est_word }}</dd>
+            {% endfor %}
+        </dl>
     </div>
 
-<div class="col-sm-7"><dl>
-  <dt><h3>
-    <p class="text-primary" style="color: #bf8040"> {{ entry.est_word }}<small class="font-italic text-lowercase"> {{ entry.est_postag }} </small> </p>  </h3>
-  </dt>
- <div class="row">
-  <div class="col-md-4">
-    {% for item in entry.svk_words %}
-      <dd> {{ item }} </dd>
-        {% endfor %}
-  </div>
-</div>
-</dl>
+    <div class="col-sm-6">
+        <dl>
+            <dt>
+                <h3>
+                    <p class="text-primary" style="color: #bf8040;">{{ entry.est_word }}<small class="font-italic text-lowercase"> {{ entry.est_postag }} </small></p>
+                </h3>
+            </dt>
+            <div class="row">
+                <div class="col-md-4">
+                    {% for item in entry.svk_words %}
+                    <dd>{{ item }}</dd>
+                    {% endfor %}
+                </div>
+            </div>
+        </dl>
 
-<div class="row">
-  <div class="col-md-12">
-    <a href= {{ entry.sonaveeb }} >Otsi sõnaveebilt</a>
-  </div>
-</div>
-</div>
-<div class="col-sm-3">
-  <dl>
-      <dt><p class="text-success" style="margin-top:30px; color: #bf8040">Sõnavormid:</p></dt>
+        <div class="row">
+            <div class="col-md-12">
+                <a href={{ entry.sonaveeb }}>Otsi sõnaveebilt</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <dl>
+            <dt><p class="text-success" style="margin-top: 30px; color: #bf8040;">Sõnavormid:</p></dt>
 
-
-        {% for item in entry.shapes.split(',') %}
-        <dd> {{ item[2:-1] }} </dd>
-          {% endfor %}
-
+            {% for item in entry.shapes.split(',') %}
+            <dd>{{ item[2:-1] }}</dd>
+            {% endfor %}
+        </dl>
     </div>
 </div>
-
 
 {% endblock %}
