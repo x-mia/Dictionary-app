@@ -1,7 +1,7 @@
 {% extends 'bootstrap/base.html' %}
 
 {% block title %}
-    Eesti-Slovaki Sõnaraamat
+    {{ _('Eesti-Slovaki Sõnaraamat') }}
 {% endblock %}
 {% block content %}
     <div class="container-fluid my-3 text-white" style="background-color:#998066; color:#f9f2ec; padding: 0.7%">
@@ -10,20 +10,23 @@
     <nav class="navbar navbar-expand-sm " style="background-color:#e0d9d1; color:#3d3329">
       <div class="container-fluid" style="padding-top: 0.5%; padding-bottom: 0.5%">
         <ul class="nav navbar-nav" style="margin-left: 7%">
-          <li>{{ wtf.quick_form(form, action=url_for('index'), form_type="inline") }}</li>
+          <li>{{ wtf.quick_form(form, action=url_for('index', lang_code='ee'), form_type="inline") }}</li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li>
-            <a href="{{ url_for('index') }}" style="display: inline-block; padding-top: 10%; padding-bottom: 10%">
-             <img alt="est" src="https://www.statnivlajky.cz/data/flags/w580/ee.png"
-             width=30" height="20">
-          </a>
-        </li>
+              <form action={{url_for('index', lang_code='ee')}} method="post">
+                {{ form.csrf_token() }}
+              <input type="image" src="https://www.statnivlajky.cz/data/flags/w580/ee.png" width="50" height="30" alt="Submit Form"
+              style="display: inline-block; padding-top: 5%; padding-bottom: 5%; padding-right: 20%" />
+            </form>
+              </li>
+              <li></li>
         <li>
-          <a href="{{ url_for('base_svk') }}" style="display: inline-block; padding-top: 10%; padding-bottom: 10%">
-           <img alt="svk" src="https://www.statnevlajky.sk/data/flags/w580/sk.png"
-           width=30" height="20">
-          </a>
+          <form action={{url_for('index', lang_code='sk')}} method="post">
+            {{ form.csrf_token() }}
+            <input type="image" src="https://www.statnevlajky.sk/data/flags/w580/sk.png" width="50" height="30" alt="Submit Form"
+            style="display: inline-block; padding-top: 5%; padding-bottom: 5%; padding-right: 20%"/>
+          </form>
         </li>
         </ul>
 
