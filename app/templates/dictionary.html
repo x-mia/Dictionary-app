@@ -2,14 +2,14 @@
 <div class="row">
     <div class="col-sm-2">
         <dl>
-            <dt><p class="text-success" style="margin-top: 30px; color: #bf8040;">Muud:</p></dt>
+            <dt><p class="text-success" style="margin-top: 30px; color: #bf8040;">{{ _("Muud:") }}</p></dt>
 
             {% for item in other_found_words[:5] %}
             <dd>{{ item.base_word }}</dd>
             {% endfor %}
         </dl>
         <dl>
-            <dt><p class="text-success" style="margin-top: 30px; color: #bf8040;">Lähedad sõnad:</p></dt>
+            <dt><p class="text-success" style="margin-top: 30px; color: #bf8040;">{{ _("Lähedad sõnad:") }}</p></dt>
 
             {% for item in other_close_matches[:5] %}
             <dd>{{ item.base_word }}</dd>
@@ -35,7 +35,7 @@
         {% if language == 'est-svk' %}
           <div class="row">
             <div class="col-md-12">
-                <a href={{ entry.sonaveeb }}>Otsi sõnaveebilt</a>
+                <a href={{ entry.sonaveeb }}>{{ _("Otsi sõnaveebilt") }}</a>
             </div>
         </div>
         {% endif %}
@@ -43,7 +43,7 @@
     {% if language == 'est-svk' %}
     <div class="col-sm-3">
         <dl>
-            <dt><p class="text-success" style="margin-top: 30px; color: #bf8040;">Sõnavormid:</p></dt>
+            <dt><p class="text-success" style="margin-top: 30px; color: #bf8040;">{{ _("Sõnavormid:") }}</p></dt>
 
             {% for item in entry.shapes.split(',') %}
             <dd>{{ item[2:-1] }}</dd>

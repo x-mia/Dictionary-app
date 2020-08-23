@@ -10,7 +10,7 @@ app.config.from_object(Config)
 from app import routes
 
 bootstrap = Bootstrap(app)
-babel = Babel(app)
+babel = Babel(app, default_locale="ee")
 
 @babel.localeselector
 def get_locale():
@@ -22,4 +22,3 @@ def before():
         if request.view_args['lang_code'] not in ('ee', 'sk'):
             return abort(404)
         g.current_lang = request.view_args['lang_code']
-        request.view_args.pop('lang_code')

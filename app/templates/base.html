@@ -5,18 +5,18 @@
 {% endblock %}
 {% block content %}
     <div class="container-fluid my-3 text-white" style="background-color:#998066; color:#f9f2ec; padding: 0.7%">
-        <h1><div style="margin-left: 7%">Eesti-Slovaki Sõnaraamat</h1></div>
+        <h1><div style="margin-left: 7%">{{ _("Eesti-Slovaki Sõnaraamat") }}</div></h1>
     </div>
     <nav class="navbar navbar-expand-sm " style="background-color:#e0d9d1; color:#3d3329">
       <div class="container-fluid" style="padding-top: 0.5%; padding-bottom: 0.5%">
         <ul class="nav navbar-nav" style="margin-left: 7%">
-          <li>{{ wtf.quick_form(form, action=url_for('index', lang_code='ee'), form_type="inline") }}</li>
+          <li>{{ wtf.quick_form(form, action=url_for('index', lang_code=lang_code), form_type="inline") }}</li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li>
               <form action={{url_for('index', lang_code='ee')}} method="post">
                 {{ form.csrf_token() }}
-              <input type="image" src="https://www.statnivlajky.cz/data/flags/w580/ee.png" width="50" height="30" alt="Submit Form"
+              <input type="image" src="/static/ee.png" width="50" height="30" alt="Submit Form"
               style="display: inline-block; padding-top: 5%; padding-bottom: 5%; padding-right: 20%" />
             </form>
               </li>
@@ -24,7 +24,7 @@
         <li>
           <form action={{url_for('index', lang_code='sk')}} method="post">
             {{ form.csrf_token() }}
-            <input type="image" src="https://www.statnevlajky.sk/data/flags/w580/sk.png" width="50" height="30" alt="Submit Form"
+            <input type="image" src="/static/sk.png" width="50" height="30" alt="Submit Form"
             style="display: inline-block; padding-top: 5%; padding-bottom: 5%; padding-right: 20%"/>
           </form>
         </li>
@@ -50,7 +50,7 @@
     <div class="container text-center" style="bottom: 0; width: 100%">
         <div class="col-sm-12">
         <p class="lead">
-          <p class="text-secondary">Kas teil on mingi soovitusi? Puudub midagi? Tahaksite aidata tõlkimisega? Kindlasti kirjutage - 449884@mail.muni.cz ! Ootame kõik huvilisi :)</p>
+          <p class="text-secondary">{{ _("Kas teil on mingi soovitusi? Puudub midagi? Tahaksite aidata tõlkimisega? Kindlasti kirjutage - 449884@mail.muni.cz ! Ootame kõik huvilisi :)") }}</p>
         </div>
     </div>
 
