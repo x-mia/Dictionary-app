@@ -16,7 +16,6 @@ defusedxml==0.5.0
 dominate==2.4.0
 elasticsearch==2.4.0
 entrypoints==0.2.3
-estnltk==1.4.1
 flake8==3.5.0
 Flask==1.1.1
 Flask-Babel==1.0.0
