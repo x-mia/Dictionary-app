@@ -20,17 +20,13 @@ def get_entry(word_group, language):
 
     return entry
 
-def get_meaning(w, data, language):
+def get_meaning(w, gb, language):
     w = w.lower()
-    if language == "est-svk":
-        data["Lowercase"] = data["Eesti sõna"].str.lower()
 
-    if language == "svk-est":
-        data["Lowercase"] = data["Slovaki sõna"].str.lower()
-
-    gb = data.groupby("Lowercase")
     findings = [key for key in gb.groups.keys() if w in key]
-    close_matches = get_close_matches(w, data["Lowercase"])
+
+    close_matches = get_close_matches(w, gb.groups.keys())
+
 
     if w in gb.groups:
         entry = get_entry(gb.get_group(w), language)
