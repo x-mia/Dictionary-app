@@ -1,4 +1,3 @@
-from pandas import read_csv
 from difflib import get_close_matches
 from collections import namedtuple
 

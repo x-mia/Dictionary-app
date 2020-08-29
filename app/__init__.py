@@ -1,11 +1,18 @@
-from flask import Flask, g, request
+from flask import Flask, g, request, abort
 from config import Config
 from flask_bootstrap import Bootstrap
 from flask_babel import Babel
+from pandas import read_csv
 
 
 app = Flask(__name__)
 app.config.from_object(Config)
+
+data = read_csv("sonastik.csv")
+data["Lowercase_est"] = data["Eesti sõna"].str.lower()
+data["Lowercase_svk"] = data["Slovaki sõna"].str.lower()
+gb_est = data.groupby("Lowercase_est")
+gb_svk = data.groupby("Lowercase_svk")
 
 from app import routes
 

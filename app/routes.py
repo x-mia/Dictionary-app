@@ -1,16 +1,7 @@
-from app import app
+from app import app, gb_est, gb_svk
 from flask import render_template, url_for, redirect, flash, request
 from app.forms import WordForm
 from app.word_finding import get_meaning
-from pandas import read_csv
-
-
-
-data = read_csv("sonastik.csv")
-data["Lowercase_est"] = data["Eesti sõna"].str.lower()
-data["Lowercase_svk"] = data["Slovaki sõna"].str.lower()
-gb_est = data.groupby("Lowercase_est")
-gb_svk = data.groupby("Lowercase_svk")
 
 
 @app.route('/')
