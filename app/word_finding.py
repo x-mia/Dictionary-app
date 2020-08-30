@@ -13,7 +13,7 @@ def get_entry(word_group, language):
     if language == "est-svk":
         entry = Entry(base_word=first_row["Eesti sõna"], postag=first_row["Est. sõnaliik"],
         translated_words=word_group["Slovaki sõna"].tolist(), score=word_group["Skoor"].tolist(),
-        sonaveeb=first_row["Sõnaveeb"], shapes=first_row["Shapes"])
+        sonaveeb=first_row["Sõnaveeb"], shapes=eval(first_row["Shapes"]))
     if language == "svk-est":
         entry = EntrySVK(base_word=first_row["Slovaki sõna"], postag=first_row["Slov. sõnaliik"], translated_words=word_group["Eesti sõna"].tolist())
 

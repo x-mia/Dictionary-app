@@ -36,8 +36,8 @@
         <dl>
             <dt><p class="text-success" style="margin-top: 30px; color: #bf8040; font-family:Georgia">{{ _("Sõnavormid:") }}</p></dt>
 
-            {% for item in entry.shapes.split(',') %}
-            <dd style="font-family:Georgia">{{ item[2:-1] }}</dd>
+            {% for item in entry.shapes %}
+            <dd style="font-family:Georgia">{{ item }}</dd>
             {% endfor %}
         </dl>
     </div>
