@@ -4,36 +4,35 @@
     {{ _('Eesti-Slovaki Sõnaraamat') }}
 {% endblock %}
 {% block content %}
+
     <div class="container-fluid my-3 text-white" style="background-color:#998066; color:#f9f2ec; padding: 0.7%">
-        <h1><div style="margin-left: 7%">{{ _("Eesti-Slovaki Sõnaraamat") }}</div></h1>
+        <h1 style="margin-left: 7%; font-family:Georgia">{{ _("Eesti-Slovaki Sõnaraamat") }}</h1>
     </div>
-    <nav class="navbar navbar-expand-sm " style="background-color:#e0d9d1; color:#3d3329">
-      <div class="container-fluid" style="padding-top: 0.5%; padding-bottom: 0.5%">
+
+    <nav class="navbar navbar-expand-sm " style="background-color:#e0d9d1; color:#3d3329; padding-top: 0.5%; padding-bottom: 0.5%">
         <ul class="nav navbar-nav" style="margin-left: 7%">
-          <li>{{ wtf.quick_form(form, action=url_for('index', lang_code=lang_code), form_type="inline") }}</li>
+          <li class="nav-item">{{ wtf.quick_form(form, action=url_for('index', lang_code=lang_code), form_type="inline") }}
+          </li>
         </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li>
+
+        <ul class="nav navbar-nav navbar-right" style="margin-right: 0.5%">
+          <li class="nav-item">
               <form action={{url_for('index', lang_code='ee')}} method="post">
                 {{ form.csrf_token() }}
-              <input type="image" src="/static/ee.png" width="50" height="30" alt="Submit Form"
-              style="display: inline-block; padding-top: 5%; padding-bottom: 5%; padding-right: 20%" />
+                <input type="image" src="/static/ee.png" width="50" height="30" alt="Submit Form"
+                style="display: inline-block; padding-top: 5%; padding-bottom: 5%; padding-right: 20%" />
+              </form>
+          </li>
+
+          <li class="nav-item">
+            <form action={{url_for('index', lang_code='sk')}} method="post">
+              {{ form.csrf_token() }}
+              <input type="image" src="/static/sk.png" width="50" height="30" alt="Submit Form"
+              style="display: inline-block; padding-top: 5%; padding-bottom: 5%; padding-right: 20%"/>
             </form>
-              </li>
-              <li></li>
-        <li>
-          <form action={{url_for('index', lang_code='sk')}} method="post">
-            {{ form.csrf_token() }}
-            <input type="image" src="/static/sk.png" width="50" height="30" alt="Submit Form"
-            style="display: inline-block; padding-top: 5%; padding-bottom: 5%; padding-right: 20%"/>
-          </form>
-        </li>
+          </li>
         </ul>
-
-
-      </div>
     </nav>
-
 
     <div class="container-fluid">
         {% with messages = get_flashed_messages() %}
@@ -47,11 +46,11 @@
         {# application content needs to be provided in the app_content block #}
         {% block app_content %}{% endblock %}
     </div>
-    <div class="container text-center" style="bottom: 0; width: 100%">
-        <div class="col-sm-12">
-        <p class="lead">
-          <p class="text-secondary">{{ _("Kas teil on mingi soovitusi? Puudub midagi? Tahaksite aidata tõlkimisega? Kindlasti kirjutage - 449884@mail.muni.cz ! Ootame kõik huvilisi :)") }}</p>
-        </div>
-    </div>
+
+    <footer class="footer text-center navbar-fixed-bottom">
+      <div class="container" style="padding-bottom:2%; padding-top:2%">
+            <span style="font-family:Georgia">{{ _("Kas teil on mingi soovitusi? Puudub midagi? Tahaksite aidata tõlkimisega? Kindlasti kirjutage - 449884@mail.muni.cz ! Ootame kõik huvilisi :)") }}</span>
+      </div>
+    </footer>
 
 {% endblock %}

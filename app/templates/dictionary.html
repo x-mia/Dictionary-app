@@ -1,52 +1,43 @@
 {% extends "base.html" %} {% import 'bootstrap/wtf.html' as wtf %} {% block app_content %}
-<div class="row">
-    <div class="col-sm-2">
+
+<div class="row" style="margin-left: 5%">
+
+    <div class="col-sm-2" style="border-right-style:inset; border-color:#D6BF85">
         <dl>
-            <dt><p class="text-success" style="margin-top: 30px; color: #bf8040;">{{ _("Muud:") }}</p></dt>
+            <dt><p class="text-success" style="margin-top: 5%; color: #bf8040; font-family:Georgia">{{ _("Muud:") }}</p></dt>
 
             {% for item in other_found_words[:5] %}
-            <dd>{{ item.base_word }}</dd>
+            <dd style="font-family:Georgia">{{ item.base_word }}</dd>
             {% endfor %}
         </dl>
         <dl>
-            <dt><p class="text-success" style="margin-top: 30px; color: #bf8040;">{{ _("Lähedad sõnad:") }}</p></dt>
+            <dt><p class="text-success" style="margin-top: 5%; color: #bf8040; font-family:Georgia">{{ _("Lähedad sõnad:") }}</p></dt>
 
             {% for item in other_close_matches[:5] %}
-            <dd>{{ item.base_word }}</dd>
+            <dd style="font-family:Georgia">{{ item.base_word }}</dd>
             {% endfor %}
         </dl>
     </div>
 
-    <div class="col-sm-6">
+    <div class="col-sm-6" style="margin-left: 7%">
         <dl>
-            <dt>
-                <h3>
-                    <p class="text-primary" style="color: #bf8040;">{{ entry.base_word }}<small class="font-italic text-lowercase"> {{ entry.postag }} </small></p>
-                </h3>
-            </dt>
-            <div class="row">
-                <div class="col-md-4">
+            <dt><h3><p class="text-primary" style="color: #bf8040; font-family:Georgia">{{ entry.base_word }}<small class="font-italic text-lowercase"> {{ entry.postag }} </small></p></h3></dt>
                     {% for item in entry.translated_words %}
-                    <dd>{{ item }}</dd>
+                    <dd style="font-family:Georgia">{{ item }}</dd>
                     {% endfor %}
-                </div>
-            </div>
         </dl>
-        {% if language == 'est-svk' %}
-          <div class="row">
-            <div class="col-md-12">
-                <a href={{ entry.sonaveeb }}>{{ _("Otsi sõnaveebilt") }}</a>
-            </div>
-        </div>
-        {% endif %}
+          <dd style="font-family:Georgia">{% if language == 'est-svk' %}
+              <a href={{ entry.sonaveeb }} target="_blank">{{ _("Otsi sõnaveebilt") }}</a>
+          {% endif %}</dd>
     </div>
+
     {% if language == 'est-svk' %}
     <div class="col-sm-3">
         <dl>
-            <dt><p class="text-success" style="margin-top: 30px; color: #bf8040;">{{ _("Sõnavormid:") }}</p></dt>
+            <dt><p class="text-success" style="margin-top: 30px; color: #bf8040; font-family:Georgia">{{ _("Sõnavormid:") }}</p></dt>
 
             {% for item in entry.shapes.split(',') %}
-            <dd>{{ item[2:-1] }}</dd>
+            <dd style="font-family:Georgia">{{ item[2:-1] }}</dd>
             {% endfor %}
         </dl>
     </div>
