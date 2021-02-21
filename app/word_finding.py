@@ -1,23 +1,28 @@
 from difflib import get_close_matches
 from collections import namedtuple
 
-
 Entry = namedtuple('Entry', 'base_word postag translated_words score sonaveeb shapes')
 EntrySVK = namedtuple('Entry', 'base_word postag translated_words')
 
-def get_entry(word_group, language):
 
+def get_entry(word_group, language):
     word_group = word_group.sort_values(by="Skoor", ascending=False)
     first_row = word_group.iloc[0]
 
     if language == "est-svk":
+        if first_row["Est. sõnaliik"] == "V":
+            shapes = [first_row["Eesti sõna"], first_row["DA INF"], first_row["1.isik aktiiv"], first_row["Impersonaal"]]
+        else:
+            shapes = [first_row["Eesti sõna"], first_row["SG GEN"], first_row["SG PART"], first_row["PL PART"]]
         entry = Entry(base_word=first_row["Eesti sõna"], postag=first_row["Est. sõnaliik"],
-        translated_words=word_group["Slovaki sõna"].tolist(), score=word_group["Skoor"].tolist(),
-        sonaveeb=first_row["Sõnaveeb"], shapes=eval(first_row["Shapes"]))
+                      translated_words=word_group["Slovaki sõna"].tolist(), score=word_group["Skoor"].tolist(),
+                      sonaveeb=first_row["Sõnaveeb"], shapes=shapes)
     if language == "svk-est":
-        entry = EntrySVK(base_word=first_row["Slovaki sõna"], postag=first_row["Slov. sõnaliik"], translated_words=word_group["Eesti sõna"].tolist())
+        entry = EntrySVK(base_word=first_row["Slovaki sõna"], postag=first_row["Slov. sõnaliik"],
+                         translated_words=word_group["Eesti sõna"].tolist())
 
     return entry
+
 
 def get_meaning(w, gb, language):
     w = w.lower()
@@ -25,7 +30,6 @@ def get_meaning(w, gb, language):
     findings = [key for key in gb.groups.keys() if w in key]
 
     close_matches = get_close_matches(w, gb.groups.keys())
-
 
     if w in gb.groups:
         entry = get_entry(gb.get_group(w), language)
